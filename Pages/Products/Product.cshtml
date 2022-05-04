@@ -1,0 +1,18 @@
+﻿@page
+@model M05_UF3_P2_Template.Pages.Products.ProductModel
+@{
+}
+
+<from method="post">
+    <button type="submit">Save</button>
+
+    <input type="text" asp-for="product.Summary">
+    <input type="text" asp-for="product.Icon">
+    <input type="text" asp-for="product.Banner">
+    <input type="text" asp-for="product.Trailer">
+    <input type="text" asp-for="product.Price">
+    <input type="text" asp-for="product.Publishing">
+    <input type="text" asp-for="product.Size">
+    <input type="text" min="0" step="1" asp-for="product.Developer_id">
+    <input type="text" min="0" step="1" asp-for="product.Editor_id">
+</from>
