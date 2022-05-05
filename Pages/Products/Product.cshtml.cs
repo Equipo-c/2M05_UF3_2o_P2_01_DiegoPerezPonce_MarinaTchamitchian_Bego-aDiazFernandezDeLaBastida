@@ -12,20 +12,19 @@ namespace M05_UF3_P2_Template.Pages.Products
     {
         [BindProperty(SupportsGet = true)]
         public int Id { get; set; }
+        public int helper_id;
+
         [BindProperty]
         public Product product { get; set; }
         public void OnGet()
         {
-            if (Id > 0)
+            if(Id > 0)
             {
                 product = new Product(Id);
-                /*if(product.Type == Product.TYPE.Game)
-                {
-
-                }
-                */
+                helper_id = (int)DatabaseManager.Select("Game", new string[] { "Id" }, "Product_Id = " + Id).Rows[0][0];
             }
         }
+
         public void OnPost()
         {
             product.Id = Id;

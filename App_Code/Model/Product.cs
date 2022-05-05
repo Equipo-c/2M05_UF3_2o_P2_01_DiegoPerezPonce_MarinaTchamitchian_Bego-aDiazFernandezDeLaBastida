@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -46,7 +46,6 @@ namespace M05_UF3_P2_Template.App_Code.Model
             {
                 Type = 0;
             }
-
             Summary = row[2].ToString();
             Icon = row[3].ToString();
             Banner = row[4].ToString();
@@ -116,9 +115,8 @@ namespace M05_UF3_P2_Template.App_Code.Model
                 new DatabaseManager.DB_Field("Developer_id", Developer_id),
                 new DatabaseManager.DB_Field("Editor_id", Editor_id)
             };
-            return DatabaseManager.Update("Company", fields, "Id = " + Id + " ") > 0 ? true : false;
+            return DatabaseManager.Update("Product", fields, "Id = " + Id + " ") > 0 ? true : false;
         }
-
         public bool Add()
         {
             DatabaseManager.DB_Field[] fields = new DatabaseManager.DB_Field[]
@@ -129,7 +127,7 @@ namespace M05_UF3_P2_Template.App_Code.Model
                 new DatabaseManager.DB_Field("Banner", Banner),
                 new DatabaseManager.DB_Field("Trailer", Trailer),
                 new DatabaseManager.DB_Field("Price", Price),
-               // new DatabaseManager.DB_Field("Publishing", Publishing),
+                //new DatabaseManager.DB_Field("Publishing", Publishing),
                 new DatabaseManager.DB_Field("Size", Size),
                 new DatabaseManager.DB_Field("Developer_id", Developer_id),
                 new DatabaseManager.DB_Field("Editor_id", Editor_id)
