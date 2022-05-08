@@ -24,7 +24,9 @@
                         <h5 class="card-title">@company.Name</h5>
                     </div>
                     <div class="card-footer p-1">
+                        
                         <form asp-page-handler="delete" asp-route-id="@company.Id" method="post">
+
                             <a class="btn btn-primary" asp-page="/Companies/Company" asp-route-id="@company.Id" title="View company">
                                 <span class="material-icons text-white">visibility</span>
                             </a>
