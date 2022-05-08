@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace M05_UF3_P2_Template.Pages.Products
 {
-    public class IndexModel : PageModel
+    public class ProductModel : PageModel
     {
         [BindProperty(SupportsGet = true)]
         public int Id { get; set; }

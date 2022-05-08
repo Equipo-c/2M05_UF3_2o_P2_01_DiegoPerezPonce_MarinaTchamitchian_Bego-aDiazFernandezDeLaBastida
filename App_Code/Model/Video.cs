@@ -9,7 +9,7 @@ namespace M05_UF3_P2_Template.App_Code.Model
     public class Video
     {
         public int Id { get; set; }
-        public string Duration { get; set; }
+        public float Duration { get; set; }
       
 
 
@@ -26,7 +26,16 @@ namespace M05_UF3_P2_Template.App_Code.Model
             {
                 Id = 0;
             }
-            Duration= row[1].ToString();
+
+            try
+            {
+                Duration = float.Parse(row[1].ToString());
+            }
+            catch
+            {
+                Duration = 0;
+            }
+           
            
         }
         public Video(int Id) : this(DatabaseManager.Select("Video", null, "Id = " + Id + " ").Rows[0]) { }

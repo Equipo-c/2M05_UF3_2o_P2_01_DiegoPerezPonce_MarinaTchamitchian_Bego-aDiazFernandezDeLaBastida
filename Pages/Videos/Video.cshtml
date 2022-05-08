@@ -1,14 +1,14 @@
 ﻿@page
 @model M05_UF3_P2_Template.Pages.Videos.VideoModel
 @{
-}
+
 if (Model.Id > 0)
     {
         ViewData["Title"] = "Video - " + Model.video.Duration;
     }
     else
     {
-        ViewData["Title"] = "Company - Create";
+        ViewData["Title"] = "Video - Create";
     }
 }
 
@@ -38,7 +38,7 @@ if (Model.Id > 0)
                     <input type="text" asp-for="video.Id" value="@CustomId" readonly class="form-control" id="Company_Id_Input" placeholder="-">
                 </div>
                 <div class="form-group col-md-5">
-                    <label for="Company_Name_Input col-sm-2 col-form-label"><span class="material-icons mx-1" style="font-size: 1rem;">business</span>Duration</label>
+                    <label for="Company_Name_Input col-sm-2 col-form-label"><span  style="font-size: 1rem;"></span>Duration</label>
                     <input type="text" asp-for="video.Duration" maxlength="50" class="form-control" id="Video_Duration_Input" placeholder="Duration">
                 </div>
                 

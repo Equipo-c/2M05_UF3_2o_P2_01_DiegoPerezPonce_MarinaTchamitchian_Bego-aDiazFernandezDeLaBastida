@@ -9,7 +9,7 @@ namespace M05_UF3_P2_Template.App_Code.Model
     public class Game
     {
         public int Id { get; set; }
-        public string Rating { get; set; }
+        public float Rating { get; set; }
         public string Version { get; set; }
         
 
@@ -26,7 +26,17 @@ namespace M05_UF3_P2_Template.App_Code.Model
             {
                 Id = 0;
             }
-            Rating = row[1].ToString();
+
+
+            try
+            {
+                Rating = float.Parse(row[1].ToString());
+            }
+            catch
+            {
+                Rating = 0;
+            }
+           
             Version = row[2].ToString();
             
         }

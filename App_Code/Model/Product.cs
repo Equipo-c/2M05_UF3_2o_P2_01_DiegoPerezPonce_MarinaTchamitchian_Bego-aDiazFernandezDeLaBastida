@@ -14,8 +14,8 @@ namespace M05_UF3_P2_Template.App_Code.Model
         public string Icon { get; set; }
         public string Banner { get; set; }
         public string Trailer { get; set; }
-        public string Price { get; set; }
-        public string Publishing { get; set; }
+        public float Price { get; set; }
+        public DateTime Publishing { get; set; }
         public string Size { get; set; }
         
 
@@ -24,21 +24,33 @@ namespace M05_UF3_P2_Template.App_Code.Model
         }
         public Product(DataRow row)
         {
+            try{ Id = (int)row[0];} catch {Id = 0;}
             try
             {
-                Id = (int)row[0];
-               
+                Price = float.Parse(row[5].ToString());
             }
             catch
             {
-                Id = 0;
+                Price = 0;
             }
+            try
+            {
+                Publishing = DateTime.Parse(row[6].ToString());
+            }
+            catch
+            {
+                Publishing = DateTime.MinValue;
+            }
+
+
+
+
             Summary = row[1].ToString();
             Icon = row[2].ToString();
             Banner = row[3].ToString();
             Trailer = row[4].ToString();
-            Price = row[5].ToString();
-            Publishing = row[6].ToString();
+           
+           
             Size = row[7].ToString();
         }
         public Product(int Id) : this(DatabaseManager.Select("Product", null, "Id = " + Id + " ").Rows[0]) { }
