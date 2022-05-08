@@ -1,4 +1,40 @@
 ﻿@page
 @model M05_UF3_P2_Template.Pages.Products.SearcherProductModel
+@using M05_UF3_P2_Template.App_Code.Model;
 @{
+    ViewData["Title"] = "Product searcher";
 }
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">
+            Products
+            <a class="btn btn-primary float-right" asp-page="/Products/Product" title="Add product">
+                <span class="material-icons text-white">add</span>
+            </a>
+        </h3>
+    </div>
+    <div class="card-body px-0">
+        <div class="row justify-content-md-center text-center">
+            @foreach (Product product in Model.products)
+            {
+                <div class="col col-3 card m-1 p-0">
+                    <img class="card-img-top rounded img-fluid shadow-sm p-1" src="@product.Icon" alt="Company icon" style="height: 100px; object-fit: scale-down; background-color: @product.Banner; ">
+                    <div class="card-body p-1 pt-3">
+                        <h5 class="card-title">@product.Summary</h5>
+                    </div>
+                    <div class="card-footer p-1">
+
+                        <form asp-page-handler="delete" asp-route-id="@product.Id" method="post">
+
+                            <a class="btn btn-primary" asp-page="/Products/Produc" asp-route-id="@product.Id" title="View product">
+                                <span class="material-icons text-white">visibility</span>
+                            </a>
+                            <button class="btn btn-danger"><span class="material-icons text-white">delete</span></button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,4 +1,40 @@
 ﻿@page
 @model M05_UF3_P2_Template.Pages.Videos.SearcherVideoModel
+@using M05_UF3_P2_Template.App_Code.Model;
 @{
+    ViewData["Title"] = "video searcher";
 }
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">
+            Videos
+            <a class="btn btn-primary float-right" asp-page="/Videos/Video" title="Add video">
+                <span class="material-icons text-white">add</span>
+            </a>
+        </h3>
+    </div>
+    <div class="card-body px-0">
+        <div class="row justify-content-md-center text-center">
+            @foreach (Video video in Model.videos)
+            {
+                <div class="col col-3 card m-1 p-0">
+                    <img class="card-img-top rounded img-fluid shadow-sm p-1" src="@video.Duration" alt="Company icon" style="height: 100px; object-fit: scale-down;  ">
+                    <div class="card-body p-1 pt-3">
+                        <h5 class="card-title">@video.Duration</h5>
+                    </div>
+                    <div class="card-footer p-1">
+
+                        <form asp-page-handler="delete" asp-route-id="@video.Id" method="post">
+
+                            <a class="btn btn-primary" asp-page="/Videos/Video" asp-route-id="@video.Id" title="View video">
+                                <span class="material-icons text-white">visibility</span>
+                            </a>
+                            <button class="btn btn-danger"><span class="material-icons text-white">delete</span></button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

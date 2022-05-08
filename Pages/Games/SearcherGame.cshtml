@@ -1,4 +1,40 @@
 ﻿@page
 @model M05_UF3_P2_Template.Pages.Games.IndexModel
+@using M05_UF3_P2_Template.App_Code.Model;
 @{
+    ViewData["Title"] = "Game searcher";
 }
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">
+            Games
+            <a class="btn btn-primary float-right" asp-page="/Games/Game" title="Add game">
+                <span class="material-icons text-white">add</span>
+            </a>
+        </h3>
+    </div>
+    <div class="card-body px-0">
+        <div class="row justify-content-md-center text-center">
+            @foreach (Game game in Model.games)
+            {
+                <div class="col col-3 card m-1 p-0">
+                
+                    <div class="card-body p-1 pt-3">
+                        <h5 class="card-title">@game.Version</h5>>
+                    </div>
+                    <div class="card-footer p-1">
+
+                        <form asp-page-handler="delete" asp-route-id="@game.Id" method="post">
+
+                            <a class="btn btn-primary" asp-page="/Games/Game" asp-route-id="@game.Id" title="View Game">
+                                <span class="material-icons text-white">visibility</span>
+                            </a>
+                            <button class="btn btn-danger"><span class="material-icons text-white">delete</span></button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
