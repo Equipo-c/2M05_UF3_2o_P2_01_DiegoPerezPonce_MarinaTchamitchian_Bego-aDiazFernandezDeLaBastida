@@ -6,8 +6,13 @@ using System.Text;
 
 public static class DatabaseManager
 {
+
+
+
+
     //public const string ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\\M05_UF3_P2_Template\\App_Data\\mainDB.mdf;Integrated Security=True;Connect Timeout=30";
     public static readonly string ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + AppDomain.CurrentDomain.GetData("RelativePath") + "\\App_Data\\mainDB.mdf;Integrated Security=True;Connect Timeout=30";
+
 
     #region TYPES
     public class DB_Field
