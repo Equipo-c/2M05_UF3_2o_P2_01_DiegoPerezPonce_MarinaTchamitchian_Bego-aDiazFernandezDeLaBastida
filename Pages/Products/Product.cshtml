@@ -3,194 +3,86 @@
 @{
 
 }
-<head>
-    <style>
-        *,
-        *:before,
-        *:after {
-            -moz-box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-        }
 
-        .form-header {
-            font-size: 18px;
-            border-bottom: 1px solid #f4f4f4;
-            padding: 10px 0;
-        }
-
-        body {
-            font-family: arial, verdana;
-            font-size: 15px;
-        }
-
-        .wrapper {
-            padding: 0 25px;
-            width: 710px;
-            border: 1px solid #666;
-            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-            border-top: 3px solid #3c8dbc;
-        }
-
-        form {
-            margin: 30px 0;
-        }
-
-        .form-label {
-            float: left;
-            width: 150px;
-        }
-
-        .form-row {
-            margin: 12px 0;
-        }
-
-        .form-field {
-        }
-
-        input,
-        textarea,
-        select {
-            width: 500px;
-            height: 28px;
-            border: 1px solid #d2d6de;
-            padding: 2px 8px;
-        }
-
-        textarea {
-            height: 50px;
-        }
-
-        input[type=radio],
-        input[type=checkbox] {
-            width: 20px;
-            color: red;
-            height: 14px;
-        }
-
-        input[type=submit],
-        input[type=reset] {
-            width: 100px;
-            margin-right: 50px;
-            background-color: #3c8dbc;
-            border-color: #367fa9;
-            color: #ffffff;
-            cursor: pointer;
-        }
-
-            input[type=submit]:hover,
-            input[type=reset]:hover {
-                background-color: #367fa9;
-            }
-
-
-        .form-field:after {
-            content: '';
-            display: block;
-            clear: both;
-        }
-    </style>
-</head>
+@if (Model.Id > 0)
+ {
+      ViewData["Title"] = "Product - " + Model.product.Summary;
+ }
+ else
+ {
+      ViewData["Title"] = "Product - Create";
+ }
+}
 
 <form method="post">
-    <button type="submit">Save</button>
-
-    <input type="text" asp-for="product.Summary">
-    <input type="text" asp-for="product.Icon">
-    <input type="text" asp-for="product.Banner">
-    <input type="text" asp-for="product.Trailer">
-    <input type="number" asp-for="product.Price">
-    <input type="date" asp-for="product.Publishing">
-    <input type="number" asp-for="product.Size">
-    <input type="number" min="0" step="1" asp-for="product.Developer_id">
-    <input type="number" min="0" step="1" asp-for="product.Editor_id">
-</form>
-<a class="btn btn-primary float-right" asp-page="/Products/Game" asp-route-id="@Model.helper_id" title="View Game">
-    <span class="material-icons text-white">add</span>
-</a>
-
-
-
-<body>
-    <div class="wrapper">
-        <div class="form-header"></div>
-        <form action="" method="">
-
+    <div class="card">
+        <div class="card-header">
+            <h1 class="card-title">
+                @if (Model.Id > 0)
+                {
+                    <img class="img img-thumbnail img-fluid" src="@Model.product.Icon" style="width: 200px; height: 100px; object-fit: scale-down; background-color:@Model.product.Banner;" />
+                    <span>@Model.product.Summary - <small>Edit Product</small></span>
+                }
+                else
+                {
+                    <span>Create Product</span>
+                }
+                <button type="submit" class="btn btn-primary float-right"><span class="material-icons">save</span></button>
+            </h1>
+        </div>
+        <div class="card-body">
             <div class="form-row">
-                <div class="form-label">Name</div>
-                <div class="form-field">
-                    <input type="text" name="name" />
+                <div class="form-group col-md-2">
+                    <label for="Product_Id_Input col-sm-2 col-form-label"><span class="material-icons mx-1" style="font-size: 1rem;">tag</span>Id</label>
+                    @{
+                        string CustomId = Model.Id > 0 ? Model.Id.ToString() : null;
+                    }
+                    <input type="text" asp-for="product.Id" value="@CustomId" readonly class="form-control" id="Company_Id_Input" placeholder="-">
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="Product_Summary_Input col-sm-2 col-form-label"><span style="font-size: 1rem;"></span>Summary</label>
+                    <input type="text" asp-for="product.Summary" maxlength="50" class="form-control" id="Product_Summary_Input" placeholder="Summary">
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="Product_Icon_Input col-sm-2 col-form-label"><span style="font-size: 1rem;"></span>Icon</label>
+                    <input type="url" asp-for="product.Icon" maxlength="1000" class="form-control" id="Product_Icon_Input" placeholder="Inserte url">
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-label">Password</div>
-                <div class="form-field">
-                    <input type="password" name="password">
-                </div>
+            <div class="form-group">
+                <label for="Product_Banner_Input col-sm-2 col-form-label"><span style="font-size: 1rem;"></span>Banner</label>
+                <input type="url" asp-for="product.Banner" maxlength="2048" class="form-control" id="Product_Banner_Input" placeholder="Inserte url">
             </div>
             <div class="form-row">
-                <div class="form-label">Phone</div>
-                <div class="form-field">
-                    <input type="number" name="phone" placeholder="Please enter a number only" />
+                <div class="form-group col-md">
+                    <label for="Product_Trailer_Input col-sm-2 col-form-label"><span style="font-size: 1rem;"></span>Trailer</label>
+                    <input type="url" asp-for="product.Trailer" class="form-control" id="Product_Trailer_Input" placeholder="Trailer">
+                </div>
+                <div class="form-group col-md">
+                    <label for="Product_Price_Input col-sm-2 col-form-label"><span style="font-size: 1rem;"></span>Price</label>
+                    <input type="text" asp-for="product.Price" class="form-control" id="Product_Price_Input" placeholder="xx.xx">
+                </div>
+                <div class="form-group col-md">
+                    <label for="Product_Publishing_Input col-sm-2 col-form-label"><span style="font-size: 1rem;"></span>Publishing</label>
+                    <input type="datetime" asp-for="product.Publishing" class="form-control" id="Company_Icon_Input" placeholder="inserte url/image.png">
+                </div>
+                <div class="form-group col-md-1">
+                    <label for="Product_Size_Input col-sm-2 col-form-label"><span style="font-size: 1rem;"></span>Size</label>
+                    <input type="text" asp-for="product.Size" class="form-control" id="Product_Size_Input" placeholder="Size">
+                </div>
+                <div>
+                    <label for="Product_Developer_Input col-sm-2 col-form-label"><span style="font-size: 1rem;"></span>Developer ID</label>
+                    <input type="number" min="0" step="1" asp-for="product.Developer_id" class="form-control" id="Product_Developer_Input" placeholder="Developer ID">
+                </div>
+                <div>
+                    <label for="Product_Editor_Input col-sm-2 col-form-label"><span style="font-size: 1rem;"></span>Editor ID</label>
+                    <input type="number" min="0" step="1" asp-for="product.Editor_id" class="form-control" id="Product_Editor_Input" placeholder="Editor ID">
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-label">Gender</div>
-                <div class="form-field">
-                    <input type="radio" name="gender" value="male">Male
-                    <input type="radio" name="gender" value="female">Female
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-label">Preference:</div>
-                <div class="form-field">
-                    <input type="checkbox" name="">Morning
-                    <input type="checkbox" name="">Evening
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-label">Message</div>
-                <div class="form-field">
-                    <textarea name="message" rows="5" cols="50"></textarea>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-label">Service</div>
-                <div class="form-field">
-                    <select name="service">
-                        <option value="one">Service 1</option>
-                        <option value="two">Service 2</option>
-                        <option value="three">Service 3</option>
-                        <option value="four">Service 4</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-label">Date of Birth</div>
-                <div class="form-field">
-                    <input type="date" name="date" />
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-label">Website</div>
-                <div class="form-field">
-                    <input type="url" name="website" />
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-label">Upload file</div>
-                <div class="form-field">
-                    <input type="file" name="file">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-label"> &nbsp; </div>
-                <div class="form-field">
-                    <input type="reset" name="reset" />
-                    <input type="submit" name="message" value="Submit" />
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
-
-</body>
+    <div>
+        <a class="btn btn-primary float-right" asp-page="/Products/Game" asp-route-id="@Model.helper_id" title="View Game">
+        <span class="material-icons">read_more</span>
+        </a>
+    </div>
+</form>
