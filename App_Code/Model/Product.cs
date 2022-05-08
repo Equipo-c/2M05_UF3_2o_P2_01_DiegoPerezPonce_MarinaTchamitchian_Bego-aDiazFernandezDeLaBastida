@@ -27,6 +27,7 @@ namespace M05_UF3_P2_Template.App_Code.Model
             try
             {
                 Id = (int)row[0];
+               
             }
             catch
             {
