@@ -54,7 +54,7 @@
             <div class="form-row">
                 <div class="form-group col-md">
                     <label for="Product_Trailer_Input col-sm-2 col-form-label"><span  style="font-size: 1rem;"></span>Trailer</label>
-                    <input type="url" asp-for="product.Trailer" class="form-control" id="Product_Trailer_Input" placeholder="Trailer">
+                    <input type="url" asp-for="product.Trailer" maxlength="2048" class="form-control" id="Product_Trailer_Input" placeholder="Trailer">
                 </div>
                 <div class="form-group col-md">
                     <label for="Product_Price_Input col-sm-2 col-form-label"><span  style="font-size: 1rem;"></span>Price</label>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="form-group col-md">
                     <label for="Product_Publishing_Input col-sm-2 col-form-label"><span  style="font-size: 1rem;"></span>Publishing</label>
-                    <input type="url" asp-for="product.Publishing" class="form-control" id="Company_Icon_Input" placeholder="inserte url/image.png">
+                    <input type="url" asp-for="product.Publishing" maxlength="2048" class="form-control" id="Company_Icon_Input" placeholder="inserte url/image.png">
                 </div>
                 <div class="form-group col-md-1">
                     <label for="Product_Size_Input col-sm-2 col-form-label"><span  style="font-size: 1rem;"></span>Size</label>

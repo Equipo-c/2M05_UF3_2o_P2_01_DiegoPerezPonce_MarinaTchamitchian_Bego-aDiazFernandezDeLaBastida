@@ -5,11 +5,11 @@
     [Banner]     NTEXT         NULL,
     [Trailer]    NVARCHAR (50) NULL,
     [Price]      FLOAT (53)    NULL,
-    [Publishing] DATETIME2 (7) NULL DEFAULT (getdate()),
+    [Publishing] DATETIME2 (7) NULL DEFAULT GETDATE(),
     [Size]       FLOAT (53)    NULL,
     [Developer_id] INT NULL, 
     [Editor_id] INT NULL, 
-    [Type] TINYINT NULL, 
+    [Type] TINYINT NULL DEFAULT 0, 
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
