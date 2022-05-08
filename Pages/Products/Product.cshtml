@@ -53,20 +53,32 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md">
-                    <label for="Product_Trailer_Input col-sm-2 col-form-label"><span  style="font-size: 1rem;"></span>Trailer</label>
+                    <label for="Product_Trailer_Input col-sm-2 col-form-label"><span style="font-size: 1rem;"></span>Trailer</label>
                     <input type="url" asp-for="product.Trailer" maxlength="2048" class="form-control" id="Product_Trailer_Input" placeholder="Trailer">
                 </div>
                 <div class="form-group col-md">
-                    <label for="Product_Price_Input col-sm-2 col-form-label"><span  style="font-size: 1rem;"></span>Price</label>
+                    <label for="Product_Price_Input col-sm-2 col-form-label"><span style="font-size: 1rem;"></span>Price</label>
                     <input type="text" asp-for="product.Price" class="form-control" id="Product_Price_Input" placeholder="xx.xx">
                 </div>
                 <div class="form-group col-md">
-                    <label for="Product_Publishing_Input col-sm-2 col-form-label"><span  style="font-size: 1rem;"></span>Publishing</label>
-                    <input type="date" asp-for="product.Publishing"  class="form-control" id="Company_Icon_Input" placeholder="inserte fecha">
+                    <label for="Product_Publishing_Input col-sm-2 col-form-label"><span style="font-size: 1rem;"></span>Publishing</label>
+                    <input type="date" asp-for="product.Publishing" class="form-control" id="Company_Icon_Input" placeholder="inserte fecha">
                 </div>
                 <div class="form-group col-md-1">
-                    <label for="Product_Size_Input col-sm-2 col-form-label"><span  style="font-size: 1rem;"></span>Size</label>
+                    <label for="Product_Size_Input col-sm-2 col-form-label"><span style="font-size: 1rem;"></span>Size</label>
                     <input type="text" asp-for="product.Size" class="form-control" id="Product_Size_Input" placeholder="Size">
+                </div>
+                <div class="form-group col-md-1">
+                    <label for="Product_Type_Input col-sm-2 col-form-label"><span style="font-size: 1rem;"></span>Type</label>
+                    <input type="text" asp-for="product.Type" class="form-control" id="Product_Size_Input" placeholder="Type">
+                </div>
+                <div class="form-group col-md-1">
+                    <label for="Product_Developer_id_Input col-sm-2 col-form-label"><span style="font-size: 1rem;"></span>Developer_id</label>
+                    <input type="text" asp-for="product.Developer" class="form-control" id="Product_Developer_id_Input" placeholder="Developer_id">
+                </div>
+                <div class="form-group col-md-1">
+                    <label for="Product_Editor_Input col-sm-2 col-form-label"><span style="font-size: 1rem;"></span>Editor_id</label>
+                    <input type="text" asp-for="product.Editor" class="form-control" id="Product_Editor_Input" placeholder="Editor_id">
                 </div>
             </div>
         </div>
