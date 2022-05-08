@@ -7,7 +7,7 @@ using System.Data;
 
 namespace M05_UF3_P2_Template.App_Code.Model
 {
-    public class Game : Product
+    public class Game
     {
         public int Id { get; set; }
         public int Product_Id { get; set; }
@@ -46,9 +46,8 @@ namespace M05_UF3_P2_Template.App_Code.Model
         }
         public Game(int id) : this(DatabaseManager.Select("Game", null, "Id = " + id + " ").Rows[0]) { }
 
-        public override bool Update()
+        public bool Update()
         {
-            base.Update();
             DatabaseManager.DB_Field[] fields = new DatabaseManager.DB_Field[]
             {
                 new DatabaseManager.DB_Field("ProductId", Product_Id),
@@ -58,9 +57,8 @@ namespace M05_UF3_P2_Template.App_Code.Model
             return DatabaseManager.Update("Game", fields, "Id = " + Id + " ") > 0 ? true : false;
 
         }
-        public override bool Add()
+        public bool Add()
         {
-            base.Add();
             DatabaseManager.DB_Field[] fields = new DatabaseManager.DB_Field[]
                 {
                 new DatabaseManager.DB_Field("ProductId", Product_Id),
@@ -73,7 +71,7 @@ namespace M05_UF3_P2_Template.App_Code.Model
         {
             return Remove(Id);
         }
-        public static bool Remove(int id)
+        public bool Remove(int id)
         {
             return DatabaseManager.Delete("Product", id) > 0 ? true : false;
         }

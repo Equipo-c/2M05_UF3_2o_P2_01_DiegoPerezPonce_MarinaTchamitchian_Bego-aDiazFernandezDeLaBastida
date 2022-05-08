@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace M05_UF3_P2_Template.App_Code.Model
 {
-    public abstract class Product
+    public class Product
     {
         public int Id { get; set; }
         public enum TYPE { Game, Video }
@@ -108,7 +108,7 @@ namespace M05_UF3_P2_Template.App_Code.Model
             }
         }
         public Product(int Id) : this(DatabaseManager.Select("Product", null, "Id = " + Id + " ").Rows[0]) { }
-        public virtual bool Update()
+        public bool Update()
         {
             DatabaseManager.DB_Field[] fields = new DatabaseManager.DB_Field[]
             {
