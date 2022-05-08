@@ -16,8 +16,12 @@ namespace M05_UF3_P2_Template.App_Code.Model
         public string Trailer { get; set; }
         public float Price { get; set; }
         public DateTime Publishing { get; set; }
-        public string Size { get; set; }
-        
+        public float Size { get; set; }
+        public enum TYPE { Game, Video }
+        public TYPE Type { get; set;  }
+        public int Developer_id { get; set;  }
+        public int Editor_id { get; set; }
+
 
         public Product()
         {
@@ -41,7 +45,30 @@ namespace M05_UF3_P2_Template.App_Code.Model
             {
                 Publishing = DateTime.MinValue;
             }
-
+            try
+            {
+                Size = float.Parse(row[7].ToString());
+            }
+            catch
+            {
+                Size = 0;
+            }
+            try
+            {
+                Type = (TYPE)(int)row[8];
+            }
+            catch
+            {
+                Type = 0;
+            }
+            if (Type == 0)
+            {
+                Type = TYPE.Game;
+            }
+            else
+            {
+                Type = TYPE.Video;
+            }
 
 
 
@@ -49,9 +76,10 @@ namespace M05_UF3_P2_Template.App_Code.Model
             Icon = row[2].ToString();
             Banner = row[3].ToString();
             Trailer = row[4].ToString();
-           
-           
-            Size = row[7].ToString();
+
+
+            try { Developer_id = (int)row[9]; } catch { Developer_id = 0; }
+            try { Editor_id = (int)row[10]; } catch { Editor_id = 0; }
         }
         public Product(int Id) : this(DatabaseManager.Select("Product", null, "Id = " + Id + " ").Rows[0]) { }
 
@@ -65,7 +93,10 @@ namespace M05_UF3_P2_Template.App_Code.Model
                 new DatabaseManager.DB_Field("Trailer", Trailer),
                 new DatabaseManager.DB_Field("Price", Price),
                 new DatabaseManager.DB_Field("Publishing", Publishing),
-                new DatabaseManager.DB_Field("Size", Size)
+                new DatabaseManager.DB_Field("Size", Size),
+                new DatabaseManager.DB_Field("Type", (int)Type),
+                new DatabaseManager.DB_Field("Developed_id", Developer_id),
+                new DatabaseManager.DB_Field("Editor_Id", Editor_id)
             };
             return DatabaseManager.Update("Product", fields, "Id = " + Id + " ") > 0 ? true : false;
         }

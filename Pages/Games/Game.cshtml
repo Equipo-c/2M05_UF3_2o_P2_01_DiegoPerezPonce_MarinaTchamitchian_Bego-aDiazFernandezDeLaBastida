@@ -1,10 +1,12 @@
 ﻿@page
-@model M05_UF3_P2_Template.Pages.Games.GameModel
+@model M05_UF3_P2_Template.Pages.Games.GameModel 
+ 
 @{
 
- if (Model.Id > 0)
+    if (Model.Id > 0)
     {
-        ViewData["Title"] = "Game- " + Model.game.Version;
+         ViewData["Title"] = "Game- " + Model.game.Version;
+      
     }
     else
     {
