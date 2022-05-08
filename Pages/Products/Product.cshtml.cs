@@ -20,7 +20,7 @@ namespace M05_UF3_P2_Template.Pages.Products
         {
             if(Id > 0)
             {
-                product = new Product(Id);
+                product = new Game(Id);
                 helper_id = (int)DatabaseManager.Select("Game", new string[] { "Id" }, "Product_Id = " + Id).Rows[0][0];
             }
         }

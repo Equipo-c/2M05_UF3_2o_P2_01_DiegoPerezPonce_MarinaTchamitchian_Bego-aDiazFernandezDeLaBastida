@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace M05_UF3_P2_Template.App_Code.Model
 {
-    public class Product
+    public abstract class Product
     {
         public int Id { get; set; }
         public enum TYPE { Game, Video }
@@ -45,6 +45,14 @@ namespace M05_UF3_P2_Template.App_Code.Model
             catch
             {
                 Type = 0;
+            }
+            if(Type == 0)
+            {
+                Type = TYPE.Game;
+            }
+            else
+            {
+                Type = TYPE.Video;
             }
             Summary = row[2].ToString();
             Icon = row[3].ToString();
@@ -100,7 +108,7 @@ namespace M05_UF3_P2_Template.App_Code.Model
             }
         }
         public Product(int Id) : this(DatabaseManager.Select("Product", null, "Id = " + Id + " ").Rows[0]) { }
-        public bool Update()
+        public virtual bool Update()
         {
             DatabaseManager.DB_Field[] fields = new DatabaseManager.DB_Field[]
             {
@@ -117,7 +125,7 @@ namespace M05_UF3_P2_Template.App_Code.Model
             };
             return DatabaseManager.Update("Product", fields, "Id = " + Id + " ") > 0 ? true : false;
         }
-        public bool Add()
+        public virtual bool Add()
         {
             DatabaseManager.DB_Field[] fields = new DatabaseManager.DB_Field[]
             {
