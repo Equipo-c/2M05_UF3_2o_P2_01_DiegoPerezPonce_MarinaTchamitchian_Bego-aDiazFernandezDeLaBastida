@@ -20,7 +20,9 @@ namespace M05_UF3_P2_Template.App_Code.Model
         public enum TYPE { Game, Video }
         public TYPE Type { get; set;  }
         public int Developer_id { get; set;  }
+        public Company Developer { get; set; }
         public int Editor_id { get; set; }
+        public Company Editor { get; set; }
 
 
         public Product()
@@ -69,7 +71,14 @@ namespace M05_UF3_P2_Template.App_Code.Model
             {
                 Type = TYPE.Video;
             }
-
+            if (Editor_id > 0)
+            {
+                Editor = new Company(Editor_id); 
+            }
+            if (Developer_id > 0)
+            {
+                Editor = new Company(Editor_id);
+            }
 
 
             Summary = row[1].ToString();

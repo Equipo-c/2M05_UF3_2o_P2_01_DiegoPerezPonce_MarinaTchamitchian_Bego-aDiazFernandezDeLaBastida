@@ -12,6 +12,7 @@ namespace M05_UF3_P2_Template.App_Code.Model
         public float Rating { get; set; }
         public string Version { get; set; }
         public int Product_id { get; set; }
+        public Product Product { get; set;  }
 
         public Game()
         {
@@ -40,6 +41,11 @@ namespace M05_UF3_P2_Template.App_Code.Model
             Version = row[2].ToString();
 
             try { Product_id = (int)row[3]; } catch { Product_id = 0; }
+
+            if (Product_id > 0)
+            {
+                Product = new Product(Product_id);
+            }
 
         }
         public Game(int Id) : this(DatabaseManager.Select("Product", null, "Id = " + Id + " ").Rows[0]) { }

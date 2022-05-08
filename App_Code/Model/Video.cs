@@ -12,7 +12,7 @@ namespace M05_UF3_P2_Template.App_Code.Model
         public float Duration { get; set; }
         public int Product_id { get; set; }
 
-
+        public Product Product { get; set; }
         public Video()
         {
         }
@@ -36,6 +36,11 @@ namespace M05_UF3_P2_Template.App_Code.Model
                 Duration = 0;
             }
             try { Product_id = (int)row[2]; } catch { Product_id = 0; }
+
+            if (Product_id > 0)
+            {
+                Product = new Product(Product_id);
+            }
 
         }
         public Video(int Id) : this(DatabaseManager.Select("Product", null, "Id = " + Id + " ").Rows[0]) { }
