@@ -1,20 +1,14 @@
 ﻿@page
-@model M05_UF3_P2_Template.Pages.Products.GameModel
-@{
-    if (Model.Id > 0)
+@model M05_UF3_P2_Template.Pages.Games.GameModel
+@using M05_UF3_P2_Template.App_Code.Model
+@{if (Model.Id > 0)
     {
-        ViewData["Title"] = "Company - " + Model.Product.Game.Id;
+        ViewData["Title"] = "Company - " + ;
     }
     else
     {
         ViewData["Title"] = "Company - Create";
     }
-}
-
-
-@if (Model.Id > 0)
-{
-    ViewData["Title"] = "Game - Edit";
 }
 
 
@@ -58,3 +52,4 @@
         </div>
     </div>
 </form>
+
