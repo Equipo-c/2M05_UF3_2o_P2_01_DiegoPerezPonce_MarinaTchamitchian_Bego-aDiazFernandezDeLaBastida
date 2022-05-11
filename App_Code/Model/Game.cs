@@ -11,7 +11,7 @@ namespace M05_UF3_P2_Template.App_Code.Model
     {
         public int Id { get; set; }
         public int Product_Id { get; set; }
-        //public Product Product_conection { get; set; }
+        public Product Product_conection { get; set; }
         public float Rating { get; set; }
         public string Version { get; set; }
 
@@ -37,14 +37,14 @@ namespace M05_UF3_P2_Template.App_Code.Model
             {
                 Product_Id = 0;
             }
-           /* if (Product_Id > 0)
+            if (Product_Id > 0)
             {
-                Id = new Product(Product_Id);
+                Product_conection = new Product(Product_Id);
             }
-            */
+            
 
         }
-        public Game(int id) : this(DatabaseManager.Select("Game", null, "Id = " + id + " ").Rows[0]) { }
+        public Game(int id) : this(DatabaseManager.Select("Game").Rows[0]) { }
 
         public bool Update()
         {

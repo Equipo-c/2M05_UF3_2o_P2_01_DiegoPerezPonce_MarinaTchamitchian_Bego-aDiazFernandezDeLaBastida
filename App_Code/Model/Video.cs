@@ -11,7 +11,7 @@ namespace M05_UF3_P2_Template.App_Code.Model
     {
         public int Id { get; set; }
         public int Product_Id { get; set; }
-        public Product product { get; set; }
+        public Product Product_conection { get; set; }
         public float Duration { get; set; }
         public Video()
         {
@@ -37,7 +37,7 @@ namespace M05_UF3_P2_Template.App_Code.Model
             }
             if (Product_Id > 0)
             {
-                product = new Product(Product_Id);
+                Product_conection = new Product(Product_Id);
             }
             try
             {
